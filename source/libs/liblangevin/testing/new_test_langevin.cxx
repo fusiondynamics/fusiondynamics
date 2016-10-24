@@ -13,14 +13,19 @@ int main() {
     mon_equation.theta = 1./5.;
     mon_equation.Q0 = 1.;
     mon_equation.sigma = std::sqrt(2.*mon_equation.x*mon_equation.theta);
+    std::clog << "theta = ";
+    std::cin >> mon_equation.theta;
 
     // initialisation
     std::vector<double> Q;
     std::vector<double> V;
+    double f;
+    std::clog << "K/Beff = ";
+    std::cin >> f;
     long int seed;
     for (seed = 0; seed < 10000; seed++) {
         Q.push_back(mon_equation.Q0);
-        V.push_back(mon_equation.define_V0(0.));
+        V.push_back(mon_equation.define_V0(f));
     }
 
     // paramètres de la boucle sur le temps
