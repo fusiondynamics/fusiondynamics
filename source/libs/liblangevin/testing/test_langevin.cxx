@@ -21,7 +21,7 @@ int main() {
 
     // paramètres des boucles
     //     std::size_t n = 1000;
-    double tau; 
+    double tau;
     double tau_f;
     double h;
     tau = 0.;
@@ -33,10 +33,6 @@ int main() {
 
     std::cout << tau << " " << Q << std::endl;
 
-    //     for (std::size_t i=0 ; i<n ; i++) {
-    //          seed += 1;
-    //          srand48(seed);
-
     for (tau = h; tau < tau_f; tau += h) {
         double u1 = drand48();
         double u2 = drand48();
@@ -46,7 +42,6 @@ int main() {
         Q = mon_equation.eval_Q(Q,V,h);
         std::cout << tau << " " << Q << std::endl;
     }
-    //     }
 
     return 0;
 }

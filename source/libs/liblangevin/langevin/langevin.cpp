@@ -2,11 +2,11 @@
 
 #include "langevin.hpp"
 
-namespace langevin { 
+namespace langevin {
 
     double langevin::define_V0(const double f_) const {
         double V0;
-        V0 = -(x + std::sqrt(1. + x * x));
+        V0 = -(x + std::sqrt(1. + x * x))*sqrt(f_);
         return V0;
     }
 
