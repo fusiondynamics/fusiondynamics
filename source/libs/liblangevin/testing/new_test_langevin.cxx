@@ -10,11 +10,11 @@ int main() {
     // conditions initiales et paramètres du système
     langevin::langevin mon_equation; // sac
     mon_equation.x = 3.0;
-    mon_equation.theta = 1./5.;
-    mon_equation.Q0 = 1.;
-    mon_equation.sigma = std::sqrt(2.*mon_equation.x*mon_equation.theta);
+//     mon_equation.theta = 1./5.;
     std::clog << "theta = ";
     std::cin >> mon_equation.theta;
+    mon_equation.Q0 = 1.;
+    mon_equation.sigma = std::sqrt(2.*mon_equation.x*mon_equation.theta);
 
     // initialisation
     std::vector<double> Q;
@@ -23,7 +23,9 @@ int main() {
     std::clog << "K/Beff = ";
     std::cin >> f;
     long int seed;
-    for (seed = 0; seed < 10000; seed++) {
+    long int last_seed;
+    last_seed = 100000;
+    for (seed = 0; seed < last_seed; seed++) {
         Q.push_back(mon_equation.Q0);
         V.push_back(mon_equation.define_V0(f));
     }
@@ -36,13 +38,13 @@ int main() {
     tau_f =  20.;
     h = 0.0001;
 
-    std::cout << tau << " " << 0. << std::endl;
+    std::cout << tau << " " << mon_equation.Q0 << " " << 0 << std::endl;
 
     // début de la routine
     for (tau = h; tau < tau_f; tau += h) {
         double count = 0.;
         double sum_Q = 0.;
-        for(seed = 0; seed < 10000; seed++) {
+        for(seed = 0; seed < last_seed; seed++) {
             srand48(seed);
             double u1 = drand48();
             double u2 = drand48();
@@ -55,7 +57,7 @@ int main() {
                 count += 1.;
             }
         }
-        std::cout << tau << " " << sum_Q/10000. << " " << count/10000. << std::endl;
+        std::cout << tau << " " << sum_Q/last_seed << " " << count/last_seed << std::endl;
     }
 
     return 0;

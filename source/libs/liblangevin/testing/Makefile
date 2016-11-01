@@ -1,4 +1,4 @@
-all: new_test_langevin
+all: new_test_langevin 
 
 new_test_langevin: langevin.o
 	g++ langevin.o new_test_langevin.cxx -o new_test_langevin
