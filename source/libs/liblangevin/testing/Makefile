@@ -1,13 +1,7 @@
-all: turfu_langevin 
+all: test_fusion
 
-turfu_langevin: langevin.o
-	g++ langevin.o turfu_langevin.cxx -o turfu_langevin
+test_fusion:
+	g++ test_fusion.cxx -o test_fusion
 
-langevin.o:
-	g++ -c ../langevin/langevin.cpp -o langevin.o
-
-clean:
-	rm -rf *.o
-
-mrproper: clean
-	rm -rf turfu_langevin
+mrproper:
+	rm test_fusion
