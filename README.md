@@ -22,6 +22,5 @@ There are 3 columns in the data file: dimensionless time, dimensionless position
 TODO
 ----
 
-* First derivative of fusion probability
 * Two-dimensional approach
 * Code/program optimization
